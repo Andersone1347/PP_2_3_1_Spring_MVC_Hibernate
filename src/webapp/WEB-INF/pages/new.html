@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Создание</title>
+</head>
+<body>
+<style>
+  .create{
+    margin: 5px;
+  }
+  fieldset {
+    font-size: 35px;
+  }
+</style>
+<div>
+  <form th:method="POST" th:action="@{/addUser}" th:object="${user}">
+
+    <fieldset>
+      <legend>Create a user &#128587;</legend>
+      <label for="id"></label>
+      <input type="hidden" th:field="*{id}" id="id"/>
+      <label for="name">Enter your name</label>
+      <input type="text" th:field="*{name}" id="name"/><br>
+      <label for="lastName">Enter your last name</label>
+      <input type="text" th:field="*{lastName}" id="lastName"/><br>
+    </fieldset>
+<div class="create">
+    <input type="submit" value="CREATE"/>
+    <a th:href="@{/}">&larr; back </a>
+</div>
+  </form>
+</div>
+</body>
+</html>

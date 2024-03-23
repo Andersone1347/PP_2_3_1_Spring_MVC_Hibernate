@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
 
+<head>
     <meta charset="UTF-8">
-    <title>AllCar</title>
+    <title>Users</title>
 </head>
 <body>
 <style>
@@ -12,27 +12,38 @@
         /* выравнивание текста внутри ячеек */
         text-align: center;
         /* делаем границы красивыми */
-        border-collapse: collapse;
         border:2px solid black;
         font-size: 30px;
     }
+    a {
+        text-decoration: none;
+    }
+    h1 {
+       font-size: 30px;
+    }
 </style>
+<h1><a href="/new">Create a user &#128587;</a></h1>
 <table style="width:100%">
     <thead>
     <tr>
         <th scope="col">Id</th>
         <th scope="col">Name</th>
         <th scope="col">LastName</th>
-
+        <th scope="col">Change</th>
+        <th scope="col">Delete</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="car : ${car_list}">
-        <td th:text="${car.getId()}"/>
-        <td th:text="${car.getName()}"/>
-        <td th:text="${car.getLastname()}"/>
-
-
+    <tr th:each="user: ${listUsers}">
+        <td th:text="${user.getId()}"/>
+        <td th:text="${user.getName()}"/>
+        <td th:text="${user.getLastName()}"/>
+        <td>
+            <a th:href="@{/update(id=${user.id})}">&#128221;</a>
+        </td>
+        <td>
+            <a th:href="@{/delete(id=${user.id})}">&#10060;</a>
+        </td>
     </tr>
     </tbody>
 </table>
